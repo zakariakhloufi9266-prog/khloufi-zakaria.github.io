@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -170,7 +171,20 @@
     border-bottom: 1px solid rgba(255,255,255,.04);
     display: flex; align-items: center; gap: .6rem;
   }
-  .skill-list li::before { content: '›'; color: var(--accent); font-weight: 700; }
+  .skill-list li::before { content: '›'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .skill-list li a {
+    color: var(--muted); text-decoration: none;
+    transition: color .2s;
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+  }
+  .skill-list li a:hover { color: var(--accent); }
+  .tuto-badge {
+    font-family: var(--mono); font-size: .6rem;
+    background: rgba(0,229,255,.1); border: 1px solid rgba(0,229,255,.25);
+    color: var(--accent); padding: .1rem .4rem; border-radius: 2px;
+    flex-shrink: 0; opacity: 0; transition: opacity .2s;
+  }
+  .skill-list li:hover .tuto-badge { opacity: 1; }
 
   /* PARCOURS */
   .timeline { position: relative; padding-left: 2rem; }
@@ -196,8 +210,15 @@
     background: var(--card); border: 1px solid var(--border);
     border-radius: 4px; overflow: hidden;
     transition: border-color .2s, transform .2s;
+    text-decoration: none; color: inherit; display: block; cursor: pointer;
   }
   .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .project-card .open-hint {
+    display: flex; align-items: center; gap: .4rem;
+    font-family: var(--mono); font-size: .7rem; color: var(--accent);
+    padding: 0 1.5rem 1.2rem; opacity: 0; transition: opacity .2s;
+  }
+  .project-card:hover .open-hint { opacity: 1; }
   .project-header {
     padding: 1.5rem; border-bottom: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -380,59 +401,60 @@
   <div class="container">
     <div class="section-tag">// Compétences</div>
     <h2 class="section-title">Compétences <span>Techniques Acquises</span></h2>
+    <p style="color:var(--muted); font-size:.88rem; margin-bottom:2rem;">💡 Passe la souris sur une compétence et clique pour accéder à un tutoriel en français.</p>
     <div class="skills-grid">
       <div class="skill-card">
         <h3>🖥️ ADMINISTRATION SYSTÈMES</h3>
         <ul class="skill-list">
-          <li>Windows 10/11 & Windows Server</li>
-          <li>Linux (Ubuntu / Debian)</li>
-          <li>Services : DHCP, DNS, AD DS, web</li>
-          <li>Gestion Active Directory</li>
+          <li><a href="https://www.youtube.com/watch?v=b1gjdDjBnb4" target="_blank">Windows Server (de zéro à héro) <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://openclassrooms.com/fr/courses/7170491-initiez-vous-a-linux" target="_blank">Linux Ubuntu / Debian <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=CmwGSsCoInQ" target="_blank">Installation Windows Server 2019 <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://techexpert.tips/fr/pfsense-fr/pfsense-configuration-serveur-dhcp/" target="_blank">Configurer DHCP / DNS <span class="tuto-badge">📖 TechExpert</span></a></li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>🌐 RÉSEAUX</h3>
         <ul class="skill-list">
-          <li>Diagnostic : ping, tracert, Wireshark</li>
-          <li>Plan d'adressage IPv4</li>
-          <li>VLAN, switches, routeurs</li>
-          <li>Firewall pfSense, câblage RJ45</li>
+          <li><a href="https://openclassrooms.com/fr/courses/1209361-apprenez-le-fonctionnement-des-reseaux-tcp-ip" target="_blank">Réseaux TCP/IP – bases <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.it-connect.fr/chapitres/plan-dadressage-ipv4/" target="_blank">Plan d'adressage IPv4 <span class="tuto-badge">📖 IT-Connect</span></a></li>
+          <li><a href="https://www.informatiweb-pro.net/admin-systeme/pare-feu/pfsense-2-6-creer-et-utiliser-des-vlans.html" target="_blank">VLAN avec pfSense <span class="tuto-badge">📖 InformatiWeb</span></a></li>
+          <li><a href="https://provya.net/index.php?tag=auto-provisioning" target="_blank">pfSense – DHCP & firewall <span class="tuto-badge">📖 Provya</span></a></li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>🔧 SUPPORT & MAINTENANCE</h3>
         <ul class="skill-list">
-          <li>Installation & clonage de postes</li>
-          <li>Déploiement d'équipements</li>
-          <li>Masterisation, inventaire parc</li>
-          <li>Remplacement composants (SSD, RAM…)</li>
+          <li><a href="https://www.youtube.com/watch?v=ZG0mm11zoXQ" target="_blank">Bonnes pratiques admin sys <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://www.it-connect.fr/glpi/" target="_blank">Ticketing GLPI <span class="tuto-badge">📖 IT-Connect</span></a></li>
+          <li><a href="https://openclassrooms.com/fr/courses/227271-gerez-votre-parc-informatique-avec-glpi" target="_blank">Gérer un parc informatique <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=gXeKGKQxWKs" target="_blank">Active Directory – délégation <span class="tuto-badge">▶ YouTube</span></a></li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>🔒 CYBERSÉCURITÉ</h3>
         <ul class="skill-list">
-          <li>Gestion firewall & règles NAT</li>
-          <li>Antivirus SentinelOne</li>
-          <li>KeePass, gestionnaire de mots de passe</li>
-          <li>Sensibilisation & audits</li>
+          <li><a href="https://www.ssi.gouv.fr/particulier/formations/secnumacademie/" target="_blank">SecNumAcadémie – ANSSI <span class="tuto-badge">📖 ANSSI</span></a></li>
+          <li><a href="https://www.it-connect.fr/cours-tutoriels/securite/pare-feu/" target="_blank">Firewall & règles NAT <span class="tuto-badge">📖 IT-Connect</span></a></li>
+          <li><a href="https://openclassrooms.com/fr/courses/1730516-securisez-vos-donnees-avec-la-cryptographie" target="_blank">Sécurité & cryptographie <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.cnil.fr/fr/comprendre-le-rgpd" target="_blank">RGPD – comprendre les bases <span class="tuto-badge">📖 CNIL</span></a></li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>🐳 VIRTUALISATION & OUTILS</h3>
         <ul class="skill-list">
-          <li>Virtualisation (Hyper-V, VMware…)</li>
-          <li>Docker (conteneurisation)</li>
-          <li>Cisco Packet Tracer / GNS3</li>
-          <li>Ticketing GLPI, RDP, TeamViewer</li>
+          <li><a href="https://openclassrooms.com/fr/courses/2035806-virtualisez-votre-architecture-et-vos-environnements-de-travail" target="_blank">Virtualisation (VMware…) <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=fZZwN_e3LYg" target="_blank">Docker – l'essentiel <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=sn6PlRf-UHk" target="_blank">Docker complet 1h (FR) <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=PLSuzYIVSEUT6crRUmELcliug1pF8AjPto" target="_blank">Cisco Packet Tracer tutoriels <span class="tuto-badge">▶ YouTube</span></a></li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>📋 GESTION & MÉTHODES</h3>
         <ul class="skill-list">
-          <li>Documentation technique</li>
-          <li>Gestion de projet IT</li>
-          <li>Scripting (initiation)</li>
-          <li>Communication professionnelle</li>
+          <li><a href="https://openclassrooms.com/fr/courses/4296701-gerez-un-projet-digital-avec-une-methodologie-en-cascade" target="_blank">Gestion de projet IT <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://openclassrooms.com/fr/courses/6951236-mettez-en-place-une-documentation-technique" target="_blank">Documentation technique <span class="tuto-badge">📖 OpenClassrooms</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=XgKOC6X8W28" target="_blank">Scripting & automatisation <span class="tuto-badge">▶ YouTube</span></a></li>
+          <li><a href="https://www.it-connect.fr/powershell/" target="_blank">PowerShell pour admins <span class="tuto-badge">📖 IT-Connect</span></a></li>
         </ul>
       </div>
     </div>
@@ -490,7 +512,7 @@
     <div class="section-tag">// Projets</div>
     <h2 class="section-title">Projets Réalisés en <span>BTS SIO SISR</span></h2>
     <div class="projects-grid">
-      <div class="project-card">
+      <a class="project-card" href="https://cdn.gamma.app/g8cg9cy82c79yja/ba51d463482243b59c539f14211a8b74/original/procc3a9dure-d_installation-et-de-paramc3a9trage-des-services-dns-dhcp-ad.pdf" target="_blank">
         <div class="project-header">
           <span class="project-num">01</span>
           <span class="project-diff">⭐⭐☆☆☆</span>
@@ -504,8 +526,9 @@
             <span class="tag">Réseau</span>
           </div>
         </div>
-      </div>
-      <div class="project-card">
+        <div class="open-hint">📄 Voir la fiche PDF →</div>
+      </a>
+      <a class="project-card" href="https://cdn.gamma.app/g8cg9cy82c79yja/defc498af4cd446f8700109a3d1d5477/original/Active_Directory_et_pratique_de_la_GPO_1737825732-2.pdf" target="_blank">
         <div class="project-header">
           <span class="project-num">02</span>
           <span class="project-diff">⭐⭐☆☆☆</span>
@@ -519,8 +542,9 @@
             <span class="tag">GPO</span>
           </div>
         </div>
-      </div>
-      <div class="project-card">
+        <div class="open-hint">📄 Voir la fiche PDF →</div>
+      </a>
+      <a class="project-card" href="https://cdn.gamma.app/g8cg9cy82c79yja/b56c3672a5ce4c4b9bf32b2d03de58c6/original/pfsense.pdf" target="_blank">
         <div class="project-header">
           <span class="project-num">03</span>
           <span class="project-diff">⭐⭐☆☆☆</span>
@@ -534,8 +558,9 @@
             <span class="tag">VLAN</span>
           </div>
         </div>
-      </div>
-      <div class="project-card">
+        <div class="open-hint">📄 Voir la fiche PDF →</div>
+      </a>
+      <a class="project-card" href="https://cdn.gamma.app/g8cg9cy82c79yja/c1c3dbd8652447e68443236fa6d16aa2/original/zac-kurt-aurel_mitm_ssh.pdf" target="_blank">
         <div class="project-header">
           <span class="project-num">04</span>
           <span class="project-diff">⭐⭐⭐☆☆</span>
@@ -549,8 +574,9 @@
             <span class="tag">SSH</span>
           </div>
         </div>
-      </div>
-      <div class="project-card">
+        <div class="open-hint">📄 Voir la fiche PDF →</div>
+      </a>
+      <div class="project-card" style="cursor:default;">
         <div class="project-header">
           <span class="project-num">05</span>
           <span class="project-diff">⭐⭐☆☆☆</span>
@@ -564,8 +590,9 @@
             <span class="tag">TeamViewer</span>
           </div>
         </div>
+        <div class="open-hint" style="opacity:1; color: var(--muted);">📎 Uploader un PDF pour activer ce lien</div>
       </div>
-      <div class="project-card">
+      <div class="project-card" style="cursor:default;">
         <div class="project-header">
           <span class="project-num">06</span>
           <span class="project-diff">⭐⭐⭐☆☆</span>
@@ -579,6 +606,7 @@
             <span class="tag">RGPD</span>
           </div>
         </div>
+        <div class="open-hint" style="opacity:1; color: var(--muted);">📎 Uploader un PDF pour activer ce lien</div>
       </div>
     </div>
   </div>
@@ -606,9 +634,9 @@
         <p>Validation officielle des compétences numériques dans 16 domaines. Score attestant d'un niveau avancé en administration systèmes.</p>
       </div>
       <div class="cert-card">
-        <div class="cert-icon">🔄</div>
-        <h3>Formation Continue</h3>
-        <p>Veille active sur les technologies réseau, cloud, Docker et Ansible. Participation à des webinaires professionnels.</p>
+        <div class="cert-icon">🔥</div>
+        <h3>Palo Alto Networks</h3>
+        <p><strong>Identity: Features</strong> — Certificat de complétion délivré par Palo Alto Networks. Formation de 5h55 sur les fonctionnalités d'identité réseau. <br><small style="color:var(--accent); font-family:var(--mono);">ID : C443151 · Mai 2026</small></p>
       </div>
     </div>
   </div>
@@ -689,6 +717,9 @@
           <a href="https://cdn.gamma.app/g8cg9cy82c79yja/a2927899911e486c9f400232d9374abe/original/cv-de-khloufi-zakaria-pdf1.pdf" class="contact-link" target="_blank">
             <span>📄</span><span>Télécharger mon CV</span>
           </a>
+          <a href="Tableau_de_synthe_se_-KHLOUFI_Zakaria_version_finale.pdf" class="contact-link" target="_blank">
+            <span>📋</span><span>Tableau de synthèse des réalisations professionnelles</span>
+          </a>
           <a href="mailto:contact@khloufi-zakaria.fr" class="contact-link">
             <span>✉️</span><span>contact@khloufi-zakaria.fr</span>
           </a>
@@ -700,10 +731,10 @@
       <div>
         <div class="section-tag">// Objectifs</div>
         <div class="contact-goals">
-          <div class="goal-item"><div class="goal-dot"></div><p>Poursuivre en licence professionnelle ou école d'ingénieurs</p></div>
-          <div class="goal-item"><div class="goal-dot"></div><p>Me spécialiser en cybersécurité ou cloud computing</p></div>
-          <div class="goal-item"><div class="goal-dot"></div><p>Obtenir des certifications professionnelles (CCNA, CompTIA)</p></div>
-          <div class="goal-item"><div class="goal-dot"></div><p>Contribuer à des projets innovants et stimulants</p></div>
+          <div class="goal-item"><div class="goal-dot"></div><p>Poursuivre en <strong>licence professionnelle en alternance</strong> pour continuer à acquérir de l'expérience terrain tout en me formant</p></div>
+          <div class="goal-item"><div class="goal-dot"></div><p>Intégrer un <strong>Master spécialisé en Cybersécurité</strong> pour approfondir mes compétences en sécurité des systèmes d'information</p></div>
+          <div class="goal-item"><div class="goal-dot"></div><p>Obtenir des certifications professionnelles reconnues (<strong>CCNA, CompTIA Security+</strong>)</p></div>
+          <div class="goal-item"><div class="goal-dot"></div><p>Contribuer à des projets innovants en sécurité des infrastructures et protection des données</p></div>
         </div>
       </div>
     </div>
