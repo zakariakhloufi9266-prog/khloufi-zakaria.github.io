@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – KHLOUFI Zakaria | BTS SIO SISR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c10;
+  --surface: #111318;
+  --surface2: #181c24;
+  --border: rgba(255,255,255,0.07);
+  --accent: #00d4ff;
+  --accent2: #7c3aed;
+  --accent3: #10b981;
+  --warn: #f59e0b;
+  --text: #e8eaf0;
+  --muted: #6b7280;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(10,12,16,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+
+/* ── SECTIONS ── */
+section { position: relative; z-index: 1; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7rem 2.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.hero-eyebrow::before { content: '// '; opacity: 0.5; }
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+.hero-name .line2 { color: var(--accent); }
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.hero-stat-n {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.hero-stat-l {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: opacity .2s, transform .2s;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: border-color .2s, color .2s;
+  background: transparent;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── SECTION HEADER ── */
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-label::before { content: '// '; opacity: 0.5; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.section-desc {
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ── BTS SIO CARD ── */
+#about { background: var(--surface); }
+.bts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.bts-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.bts-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.bts-card-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.bts-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.bts-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+/* ── COMPÉTENCES RÉFÉRENTIEL ── */
+#skills { background: var(--bg); }
+.ref-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.ref-block-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ref-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  background: var(--accent);
+  color: var(--bg);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.ref-badge.b2 { background: var(--accent2); }
+.ref-badge.b3 { background: var(--accent3); }
+.ref-badge.b4 { background: var(--warn); color: var(--bg); }
+.ref-block h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+.skill-tag {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.skill-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.skill-tag .dot.b2 { background: var(--accent2); }
+.skill-tag .dot.b3 { background: var(--accent3); }
+.skill-tag .dot.b4 { background: var(--warn); }
+
+/* ── PARCOURS ── */
+#parcours { background: var(--surface); }
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2), var(--accent3));
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.4rem;
+  top: 0.4rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.timeline-item:nth-child(2)::before { background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
+.timeline-item:nth-child(3)::before { background: var(--accent3); box-shadow: 0 0 12px var(--accent3); }
+.timeline-item:nth-child(4)::before { background: var(--warn); box-shadow: 0 0 12px var(--warn); }
+.timeline-period {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.timeline-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.timeline-list { list-style: none; }
+.timeline-list li {
+  padding: 0.35rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.timeline-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+/* ── PROJETS ── */
+#projects { background: var(--bg); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color .3s, transform .3s;
+  position: relative;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.project-card-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.project-stars { color: var(--warn); font-size: 0.75rem; }
+.project-card-body { padding: 1.5rem; }
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.project-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 2px;
+}
+
+/* Référentiel compétences dans projets */
+.project-competences {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+}
+.project-competences-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.project-competences-list {
+  display: flex; flex-wrap: wrap; gap: 0.3rem;
+}
+.comp-chip {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  color: var(--accent);
+}
+
+.project-context {
+  background: var(--surface2);
+  border-left: 2px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.project-context strong { color: var(--text); display: block; font-size: 0.72rem; font-family: var(--font-mono); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+
+.project-card-footer { padding: 0 1.5rem 1.5rem; }
+.project-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(0,212,255,0.3);
+  padding: 0.5rem 1rem;
+  transition: background .2s;
+}
+.project-link:hover { background: rgba(0,212,255,0.08); }
+.project-link-disabled {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ── CERTIFICATIONS ── */
+#certs { background: var(--surface); }
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.cert-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cert-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+}
+.cert-icon { font-size: 2rem; margin-bottom: 1rem; }
+.cert-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.cert-card p { color: var(--muted); font-size: 0.83rem; line-height: 1.5; }
+.cert-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  margin-top: 0.75rem;
+  letter-spacing: 0.06em;
+}
+.cert-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent3);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+.cert-skill-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ── EXPÉRIENCES ── */
+#experiences { background: var(--bg); }
+.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.exp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: relative;
+}
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+}
+.exp-company {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+.exp-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+.exp-list { list-style: none; margin-bottom: 1.5rem; }
+.exp-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  color: var(--muted);
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--border);
+}
+.exp-list li:last-child { border-bottom: none; }
+.exp-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+  top: 0.55rem;
+}
+.exp-info {
+  background: var(--surface2);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  line-height: 1.7;
+}
+
+/* ── VEILLE ── */
+#veille { background: var(--surface); }
+.veille-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.veille-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.veille-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent3), var(--accent));
+}
+.veille-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+.veille-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.veille-card p { color: var(--muted); font-size: 0.87rem; line-height: 1.7; }
+.veille-points {
+  list-style: none;
+  margin-top: 1rem;
+}
+.veille-points li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.veille-points li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent3);
+}
+.veille-source {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── BILAN PERSONNEL ── */
+#bilan { background: var(--bg); }
+.bilan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.bilan-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+.bilan-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.bilan-card h3 .ico {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  background: rgba(0,212,255,0.1);
+  flex-shrink: 0;
+}
+.bilan-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+.bilan-quote {
+  background: var(--surface2);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0 0;
+  font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.bilan-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin-top: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+/* ── OBJECTIFS ── */
+.objectifs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+.obj-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.obj-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.4;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.obj-text {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CONTACT ── */
+#contact { background: var(--surface); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .2s;
+}
+.contact-link:hover { border-color: var(--accent); }
+.contact-link-icon { font-size: 1.2rem; flex-shrink: 0; }
+.contact-link-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.1rem;
+}
+.contact-link-value { font-size: 0.9rem; color: var(--text); }
+.contact-right p { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate { animation: fadeUp 0.6s ease forwards; }
+.delay-1 { animation-delay: 0.1s; opacity: 0; }
+.delay-2 { animation-delay: 0.2s; opacity: 0; }
+.delay-3 { animation-delay: 0.3s; opacity: 0; }
+.delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem; }
+  .nav-links { display: none; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  .bts-grid, .exp-grid, .veille-grid, .bilan-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+  #hero { padding: 6rem 1.5rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">ZK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Formation</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#experiences">Expériences</a></li>
+    <li><a href="#veille">Veille</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="nav-badge">BTS SIO SISR</span>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow animate delay-1">Administrateur Systèmes & Réseaux · Cybersécurité</p>
+  <h1 class="hero-name animate delay-2">
+    KHLOUFI<br><span class="line2">Zakaria</span>
+  </h1>
+  <p class="hero-sub animate delay-3">
+    Étudiant en BTS SIO option SISR, alternant chez SCC France et Sec-Cure.
+    Passionné par l'administration système, la cybersécurité et la protection des infrastructures IT.
+  </p>
+  <div class="hero-stats animate delay-3">
+    <div>
+      <div class="hero-stat-n">2</div>
+      <div class="hero-stat-l">ANS DE<br>FORMATION</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">6</div>
+      <div class="hero-stat-l">PROJETS<br>RÉALISÉS</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">4</div>
+      <div class="hero-stat-l">CERTIFI-<br>CATIONS</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">2</div>
+      <div class="hero-stat-l">EXPÉ-<br>RIENCES</div>
+    </div>
+  </div>
+  <div class="hero-actions animate delay-4">
+    <a href="https://cdn.gamma.app/g8cg9cy82c79yja/a2927899911e486c9f400232d9374abe/original/cv-de-khloufi-zakaria-pdf1.pdf" class="btn-primary" target="_blank">📄 Télécharger mon CV</a>
+    <a href="#contact" class="btn-secondary">✉ Me contacter</a>
+    <a href="https://zakariakhloufi9266-prog.github.io/khloufi-zakaria.github.io/Tableau_de_synthe_se_-KHLOUFI_Zakaria_version_finale.pdf" class="btn-secondary" target="_blank">📋 Tableau de synthèse</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BTS SIO -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">Formation</div>
+    <h2 class="section-title">Qu'est-ce que le BTS SIO SISR ?</h2>
+    <p class="section-desc">Un diplôme Bac+2 reconnu par l'Éducation Nationale, préparant aux métiers de l'infrastructure, des réseaux et de la cybersécurité.</p>
+    <div class="bts-grid">
+      <div class="bts-card">
+        <div class="bts-card-icon">📚</div>
+        <h3>Formation en 2 ans</h3>
+        <p>Le BTS SIO forme des techniciens supérieurs en informatique, spécialisés dans la gestion des infrastructures réseau et systèmes. Un diplôme reconnu par les entreprises du secteur IT.</p>
+      </div>
+      <div class="bts-card">
+        <div class="bts-card-icon">⚙️</div>
+        <h3>Option SISR</h3>
+        <p>Solutions d'Infrastructure, Systèmes et Réseaux. Cette option prépare à concevoir, installer, gérer, sécuriser et maintenir les réseaux et équipements informatiques d'une organisation.</p>
+      </div>
+      <div class="bts-card">
+        <div class="bts-card-icon">🗂️</div>
+        <h3>Référentiel de compétences</h3>
+        <p>La formation est structurée autour de 4 blocs officiels : B1 (support), B2 (administration), B3 (sécurité) et B4 SISR (infrastructure). Chaque projet et situation valide des compétences précises.</p>
+      </div>
+      <div class="bts-card">
+        <div class="bts-card-icon">💼</div>
+        <h3>Débouchés professionnels</h3>
+        <p>Administrateur systèmes & réseaux, technicien d'infrastructure, responsable support N1/N2, pilote d'exploitation, technicien cybersécurité, ou poursuite en Licence Pro / Master.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPÉTENCES RÉFÉRENTIEL -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-label">Compétences</div>
+    <h2 class="section-title">Compétences par blocs du référentiel</h2>
+    <p class="section-desc">Compétences acquises structurées selon les blocs officiels B1 à B4 du référentiel BTS SIO SISR de l'Éducation Nationale.</p>
+
+    <div class="ref-block">
+      <div class="ref-block-header">
+        <span class="ref-badge">B1</span>
+        <h3>Support et mise à disposition des services informatiques</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="dot"></span>Gestion de tickets (GLPI)</div>
+        <div class="skill-tag"><span class="dot"></span>Support N1 / N2 utilisateurs</div>
+        <div class="skill-tag"><span class="dot"></span>Prise en main à distance (TeamViewer, RDP)</div>
+        <div class="skill-tag"><span class="dot"></span>Diagnostic incidents réseau</div>
+        <div class="skill-tag"><span class="dot"></span>Documentation technique</div>
+        <div class="skill-tag"><span class="dot"></span>Gestion parc informatique</div>
+      </div>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-block-header">
+        <span class="ref-badge b2">B2</span>
+        <h3>Administrer les systèmes et les réseaux</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="dot b2"></span>Windows Server 2019 / AD DS</div>
+        <div class="skill-tag"><span class="dot b2"></span>Active Directory + GPO</div>
+        <div class="skill-tag"><span class="dot b2"></span>DHCP / DNS</div>
+        <div class="skill-tag"><span class="dot b2"></span>Linux Ubuntu / Debian</div>
+        <div class="skill-tag"><span class="dot b2"></span>Scripting PowerShell</div>
+        <div class="skill-tag"><span class="dot b2"></span>Virtualisation (VMware, VirtualBox)</div>
+        <div class="skill-tag"><span class="dot b2"></span>Docker (conteneurisation)</div>
+        <div class="skill-tag"><span class="dot b2"></span>Plan d'adressage IPv4</div>
+        <div class="skill-tag"><span class="dot b2"></span>VLAN / segmentation réseau</div>
+        <div class="skill-tag"><span class="dot b2"></span>Cisco Packet Tracer</div>
+      </div>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-block-header">
+        <span class="ref-badge b3">B3</span>
+        <h3>Faire évoluer et sécuriser les infrastructures</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="dot b3"></span>pfSense (pare-feu, NAT)</div>
+        <div class="skill-tag"><span class="dot b3"></span>Règles firewall & politiques de sécurité</div>
+        <div class="skill-tag"><span class="dot b3"></span>ARP Spoofing / MITM (lab contrôlé)</div>
+        <div class="skill-tag"><span class="dot b3"></span>Déploiement antivirus SentinelOne</div>
+        <div class="skill-tag"><span class="dot b3"></span>Gestion des mots de passe (KeePass)</div>
+        <div class="skill-tag"><span class="dot b3"></span>RGPD & conformité</div>
+        <div class="skill-tag"><span class="dot b3"></span>Sensibilisation cybersécurité</div>
+        <div class="skill-tag"><span class="dot b3"></span>Cryptographie & SSL/TLS</div>
+      </div>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-block-header">
+        <span class="ref-badge b4">B4 SISR</span>
+        <h3>Conception et déploiement d'infrastructures</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="dot b4"></span>Architecture systèmes & réseaux</div>
+        <div class="skill-tag"><span class="dot b4"></span>Migration de serveurs</div>
+        <div class="skill-tag"><span class="dot b4"></span>Déploiement services essentiels</div>
+        <div class="skill-tag"><span class="dot b4"></span>Supervision et monitoring</div>
+        <div class="skill-tag"><span class="dot b4"></span>Palo Alto Networks Identity</div>
+        <div class="skill-tag"><span class="dot b4"></span>Gestion de projet IT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="section-wrap">
+    <div class="section-label">Parcours</div>
+    <h2 class="section-title">Mon parcours scolaire & professionnel</h2>
+    <p class="section-desc">Deux années de formation intensive, complétées par deux expériences en alternance dans des environnements professionnels exigeants.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-period">2022 – 2023 · 1ÈRE ANNÉE</div>
+        <div class="timeline-title">BTS SIO SISR — Fondamentaux</div>
+        <div class="timeline-sub">Acquisition des bases en infrastructure systèmes et réseaux</div>
+        <ul class="timeline-list">
+          <li>Installation et administration de systèmes Windows Server & Linux (Debian/Ubuntu)</li>
+          <li>Configuration de services réseau : DHCP, DNS, serveur web Apache</li>
+          <li>Utilisation de la virtualisation avec VMware et VirtualBox</li>
+          <li>Initiation aux GPO Active Directory et gestion des utilisateurs</li>
+          <li>Découverte de la cybersécurité : pare-feu, politiques de sécurité</li>
+          <li>Initiation au scripting PowerShell pour l'automatisation</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-period">2023 – 2024 · 2ÈME ANNÉE</div>
+        <div class="timeline-title">BTS SIO SISR — Approfondissement</div>
+        <div class="timeline-sub">Montée en compétences techniques et projets avancés</div>
+        <ul class="timeline-list">
+          <li>Conception d'architectures systèmes et réseaux complètes avec segmentation VLAN</li>
+          <li>Mise en place d'environnements virtualisés avancés (pfSense, AD DS, DNS)</li>
+          <li>Découverte de la conteneurisation avec Docker</li>
+          <li>Réalisation d'un TP MITM/ARP Spoofing en environnement contrôlé (cybersécurité offensive)</li>
+          <li>Animation de formations de sensibilisation cybersécurité chez Sec-Cure</li>
+          <li>Déploiement de solutions de sécurité : SentinelOne, KeePass</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-period">2023 – 2024 · ALTERNANCE</div>
+        <div class="timeline-title">SCC France — Technicien Helpdesk N1</div>
+        <div class="timeline-sub">Nanterre (92) · Support utilisateurs à grande échelle</div>
+        <ul class="timeline-list">
+          <li>Réception, qualification et traitement des tickets incidents (matériel, logiciel, réseau)</li>
+          <li>Assistance bureautique (Office 365, messagerie) et réinitialisation AD</li>
+          <li>Prise en main à distance via TeamViewer, AnyDesk et RDP</li>
+          <li>Migration de serveurs et rédaction de documentation technique</li>
+          <li>Gestion des priorités sur un parc client de 6 000+ entreprises</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-period">2023 – 2024 · ALTERNANCE</div>
+        <div class="timeline-title">Sec-Cure — Cybersécurité & Sensibilisation</div>
+        <div class="timeline-sub">Lille (59) · Startup cybersécurité et numérique responsable</div>
+        <ul class="timeline-list">
+          <li>Livraison, installation et maintenance du matériel informatique clients</li>
+          <li>Gestion et inventaire du parc informatique</li>
+          <li>Animation de formations cybersécurité ludiques (escape game)</li>
+          <li>Audits et contrôles des installations logicielles clients</li>
+          <li>Déploiement de l'antivirus SentinelOne sur postes clients</li>
+          <li>Mise en place de KeePass comme gestionnaire de mots de passe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJETS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label">Projets</div>
+    <h2 class="section-title">Projets réalisés en BTS SIO SISR</h2>
+    <p class="section-desc">Chaque projet est présenté avec son contexte, sa démarche, ses résultats et les compétences du référentiel mobilisées.</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJET 01 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 01</span>
+          <span class="project-stars">★★☆☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>Serveur DHCP + DNS</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            Dans un réseau local simulé, les postes n'avaient aucune attribution automatique d'adresses IP ni résolution de noms. Il fallait mettre en place les services fondamentaux d'infrastructure.
+          </div>
+          <p>Installation et configuration d'un serveur Windows Server distribuant des adresses IP (DHCP) et résolvant les noms de domaine (DNS) en environnement local virtualisé.</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B2 — Administration réseaux</span>
+              <span class="comp-chip">B4 — Déploiement services</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Windows Server</span>
+            <span class="project-tag">Linux</span>
+            <span class="project-tag">Réseau TCP/IP</span>
+            <span class="project-tag">VMware</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <a href="https://cdn.gamma.app/g8cg9cy82c79yja/ba51d463482243b59c539f14211a8b74/original/procc3a9dure-d_installation-et-de-paramc3a9trage-des-services-dns-dhcp-ad.pdf" class="project-link" target="_blank">📄 Voir la fiche PDF →</a>
+        </div>
+      </div>
+
+      <!-- PROJET 02 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 02</span>
+          <span class="project-stars">★★☆☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>Active Directory + GPO</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            Besoin de centraliser la gestion des utilisateurs, des groupes et des politiques de sécurité d'un parc d'entreprise simulé de 50 postes.
+          </div>
+          <p>Création d'un domaine Windows, des utilisateurs et unités organisationnelles (OU), puis application de stratégies de groupe (GPO) pour uniformiser la configuration du parc.</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B2 — Administration systèmes</span>
+              <span class="comp-chip">B3 — Sécurité des accès</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Windows Server</span>
+            <span class="project-tag">AD DS</span>
+            <span class="project-tag">GPO</span>
+            <span class="project-tag">PowerShell</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <a href="https://cdn.gamma.app/g8cg9cy82c79yja/defc498af4cd446f8700109a3d1d5477/original/Active_Directory_et_pratique_de_la_GPO_1737825732-2.pdf" class="project-link" target="_blank">📄 Voir la fiche PDF →</a>
+        </div>
+      </div>
+
+      <!-- PROJET 03 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 03</span>
+          <span class="project-stars">★★☆☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>Pare-feu pfSense</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            Un réseau d'entreprise simulé était entièrement ouvert sans filtrage du trafic. Il fallait sécuriser les flux entre les zones LAN, WAN et DMZ en appliquant le principe du moindre privilège.
+          </div>
+          <p>Configuration d'un pare-feu pfSense avec interfaces WAN/LAN, règles NAT, VLAN et politiques de filtrage adaptées à une TPE. Réseau segmenté et protégé contre les accès non autorisés.</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B3 — Sécurisation infrastructure</span>
+              <span class="comp-chip">B4 — Architecture réseau</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">pfSense</span>
+            <span class="project-tag">Firewall</span>
+            <span class="project-tag">VLAN</span>
+            <span class="project-tag">NAT</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <a href="https://cdn.gamma.app/g8cg9cy82c79yja/b56c3672a5ce4c4b9bf32b2d03de58c6/original/pfsense.pdf" class="project-link" target="_blank">📄 Voir la fiche PDF →</a>
+        </div>
+      </div>
+
+      <!-- PROJET 04 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 04</span>
+          <span class="project-stars">★★★☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>TP MITM / ARP Spoofing</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            Pour comprendre les attaques réseau et savoir les détecter, il était nécessaire de reproduire une attaque Man-in-the-Middle en environnement contrôlé, sans risque pour des systèmes réels.
+          </div>
+          <p>Mise en pratique d'une attaque ARP Spoofing pour intercepter des communications SSH sur un réseau local virtualisé isolé. Analyse du trafic et proposition de contre-mesures (HTTPS, HSTS, détection ARP).</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B3 — Sécurité offensive/défensive</span>
+              <span class="comp-chip">B2 — Protocoles réseau</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Cybersécurité</span>
+            <span class="project-tag">SSH</span>
+            <span class="project-tag">Wireshark</span>
+            <span class="project-tag">Kali Linux</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <a href="https://cdn.gamma.app/g8cg9cy82c79yja/c1c3dbd8652447e68443236fa6d16aa2/original/zac-kurt-aurel_mitm_ssh.pdf" class="project-link" target="_blank">📄 Voir la fiche PDF →</a>
+        </div>
+      </div>
+
+      <!-- PROJET 05 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 05</span>
+          <span class="project-stars">★★☆☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>Support Utilisateurs — SCC France</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            En alternance chez SCC, les utilisateurs de grandes entreprises clientes remontaient quotidiennement des incidents de niveau 1 (matériel, logiciel, réseau). Il fallait les qualifier, prioriser et résoudre ou escalader efficacement.
+          </div>
+          <p>Traitement de tickets helpdesk quotidiens via GLPI, assistance à distance (TeamViewer, RDP), réinitialisation AD, diagnostic réseau et rédaction de procédures pour les cas récurrents.</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B1 — Support et assistance</span>
+              <span class="comp-chip">B2 — Administration AD</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">GLPI</span>
+            <span class="project-tag">TeamViewer</span>
+            <span class="project-tag">Active Directory</span>
+            <span class="project-tag">Office 365</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <span class="project-link-disabled">📎 Fiche PDF en cours de préparation</span>
+        </div>
+      </div>
+
+      <!-- PROJET 06 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">PROJET 06</span>
+          <span class="project-stars">★★★☆☆</span>
+        </div>
+        <div class="project-card-body">
+          <h3>Sensibilisation Cybersécurité — Sec-Cure</h3>
+          <div class="project-context">
+            <strong>CONTEXTE & PROBLÈME</strong>
+            Les employés des entreprises clientes de Sec-Cure n'étaient pas sensibilisés aux risques numériques. Il fallait concevoir une approche ludique et mémorable pour changer les comportements.
+          </div>
+          <p>Animation de sessions de sensibilisation sous forme d'escape game cybersécurité. Thèmes abordés : phishing, mots de passe, RGPD, ingénierie sociale. Résultat : forte adhésion des participants et retour positif des managers.</p>
+          <div class="project-competences">
+            <div class="project-competences-title">Compétences mobilisées</div>
+            <div class="project-competences-list">
+              <span class="comp-chip">B3 — Sensibilisation sécurité</span>
+              <span class="comp-chip">B1 — Relation utilisateurs</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Sec-Cure</span>
+            <span class="project-tag">Pédagogie</span>
+            <span class="project-tag">RGPD</span>
+            <span class="project-tag">Phishing</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <span class="project-link-disabled">📎 Fiche PDF en cours de préparation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-wrap">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Certifications & formations complémentaires</h2>
+    <p class="section-desc">Chaque certification est rattachée aux compétences professionnelles qu'elle renforce dans le référentiel BTS SIO SISR.</p>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <h3>SecNumAcadémie — ANSSI</h3>
+        <p>Certification cybersécurité de l'Agence Nationale de la Sécurité des Systèmes d'Information. Couvre les menaces numériques, la cryptographie et les bonnes pratiques de sécurité.</p>
+        <div class="cert-skill-link">→ Renforce : B3 (sécurisation des SI)</div>
+        <div class="cert-date">Obtenue — Formation 2023/2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⚖️</div>
+        <h3>RGPD & Protection des données — CNIL</h3>
+        <p>MOOC complet sur le Règlement Général sur la Protection des Données. Obligations légales, mise en conformité des SI, droits des personnes concernées.</p>
+        <div class="cert-skill-link">→ Renforce : B3 (conformité et sécurité des données)</div>
+        <div class="cert-date">Obtenue — Formation 2023/2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📊</div>
+        <h3>Certification PIX</h3>
+        <p>Validation officielle des compétences numériques dans 16 domaines. Score attestant d'un niveau avancé dans l'utilisation et l'administration des outils numériques.</p>
+        <div class="cert-skill-link">→ Renforce : B1 (compétences transversales numériques)</div>
+        <div class="cert-date">Score avancé — 2023</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🔥</div>
+        <h3>Palo Alto Networks — Identity Features</h3>
+        <p>Formation de 5h55 sur les fonctionnalités d'identité réseau et gestion des accès de la plateforme Palo Alto. Certificat de complétion officiel.</p>
+        <div class="cert-skill-link">→ Renforce : B4 SISR (solutions d'infrastructure avancées)</div>
+        <div class="cert-date">ID C443151 · Mai 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPÉRIENCES -->
+<section id="experiences">
+  <div class="section-wrap">
+    <div class="section-label">Expériences</div>
+    <h2 class="section-title">Expériences professionnelles</h2>
+    <p class="section-desc">Deux alternances complémentaires, l'une orientée support à grande échelle, l'autre orientée cybersécurité et sensibilisation.</p>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-company">SCC France</div>
+        <div class="exp-role">TECHNICIEN HELPDESK N1 · ALTERNANCE</div>
+        <ul class="exp-list">
+          <li>Réception des appels et tickets (matériel, logiciel, réseau)</li>
+          <li>Qualification et priorisation des incidents selon urgence</li>
+          <li>Assistance logiciels bureautiques (Office 365, messagerie)</li>
+          <li>Réinitialisation mots de passe (AD, applications métier)</li>
+          <li>Prise en main à distance (TeamViewer, AnyDesk, RDP)</li>
+          <li>Migration de serveurs et documentation technique</li>
+        </ul>
+        <div class="exp-info">
+          📍 96 Rue des Trois Fontanot, 92000 Nanterre<br>
+          💶 CA : ~2,9 Mds € · 2 700 collaborateurs<br>
+          🏢 6 000+ entreprises publiques & privées clientes
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-company">Sec-Cure</div>
+        <div class="exp-role">CYBERSÉCURITÉ & SENSIBILISATION · ALTERNANCE</div>
+        <ul class="exp-list">
+          <li>Livraison et installation de matériel informatique</li>
+          <li>Gestion et inventaire du parc informatique client</li>
+          <li>Animation de formations cybersécurité (escape game)</li>
+          <li>Audits et contrôles des installations logicielles</li>
+          <li>Déploiement antivirus SentinelOne sur postes clients</li>
+          <li>Mise en place KeePass (gestionnaire de mots de passe)</li>
+        </ul>
+        <div class="exp-info">
+          📍 Bât. Wenove, 177 allée Clémentine Deman, 59000 Lille<br>
+          🌐 www.sec-cure.eu<br>
+          🔐 Startup · Cybersécurité & numérique responsable
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VEILLE TECHNOLOGIQUE -->
+<section id="veille">
+  <div class="section-wrap">
+    <div class="section-label">Veille technologique</div>
+    <h2 class="section-title">Veille technologique régulière</h2>
+    <p class="section-desc">Dans le cadre de l'épreuve E6, j'effectue une veille régulière sur l'actualité cybersécurité et les évolutions des infrastructures IT.</p>
+
+    <div class="veille-grid">
+      <div class="veille-card">
+        <div class="veille-date">VEILLE N°1 · JANVIER 2024</div>
+        <h3>L'évolution des attaques par phishing et les nouvelles méthodes de protection</h3>
+        <p>Les attaques de phishing deviennent de plus en plus réalistes grâce à l'intelligence artificielle : emails mieux rédigés, logos officiels reproduits à l'identique, fausses pages de connexion indétectables. Le smishing (par SMS) se développe également.</p>
+        <ul class="veille-points">
+          <li>L'IA générative permet de créer des messages de phishing personnalisés et crédibles à grande échelle</li>
+          <li>La double authentification (MFA) réduit drastiquement l'impact d'un identifiant volé</li>
+          <li>Les filtres anti-spam nouvelle génération utilisent le machine learning pour détecter les tentatives</li>
+          <li>La sensibilisation humaine reste le premier rempart contre l'ingénierie sociale</li>
+        </ul>
+        <div class="veille-source">Sources : ANSSI · CERT-FR · Phishing.org · Rapport Verizon DBIR 2023</div>
+      </div>
+
+      <div class="veille-card">
+        <div class="veille-date">VEILLE N°2 · MARS 2024</div>
+        <h3>Ransomware as a Service (RaaS) : une menace industrialisée pour les PME</h3>
+        <p>Le modèle Ransomware as a Service permet à des cybercriminels peu techniques de louer des outils de ransomware clés en main. Les PME, souvent moins bien protégées que les grands groupes, sont des cibles de choix.</p>
+        <ul class="veille-points">
+          <li>Le RaaS fonctionne comme un véritable modèle commercial avec support, interface et partage des rançons</li>
+          <li>Les sauvegardes isolées (règle 3-2-1) restent la meilleure protection contre le chiffrement des données</li>
+          <li>La segmentation réseau limite la propagation latérale en cas d'infection</li>
+          <li>Les EDR (comme SentinelOne) permettent une détection comportementale en temps réel</li>
+        </ul>
+        <div class="veille-source">Sources : ANSSI · Europol · Rapport Sophos 2024 · IT-Connect</div>
+      </div>
+
+      <div class="veille-card">
+        <div class="veille-date">VEILLE N°3 · MAI 2024</div>
+        <h3>Zero Trust Architecture : vers une sécurité périmétrique repensée</h3>
+        <p>Le modèle Zero Trust ("ne jamais faire confiance, toujours vérifier") remet en question les architectures réseau traditionnelles basées sur un périmètre défendu. Avec la généralisation du télétravail et du cloud, cette approche devient incontournable.</p>
+        <ul class="veille-points">
+          <li>Chaque accès est authentifié et autorisé individuellement, même depuis l'intérieur du réseau</li>
+          <li>Le principe du moindre privilège est appliqué systématiquement à tous les comptes</li>
+          <li>Les solutions ZTNA (Zero Trust Network Access) remplacent progressivement les VPN traditionnels</li>
+          <li>Palo Alto Networks et Microsoft sont des acteurs majeurs de cette transformation</li>
+        </ul>
+        <div class="veille-source">Sources : NIST SP 800-207 · Microsoft Security Blog · Palo Alto Networks</div>
+      </div>
+
+      <div class="veille-card">
+        <div class="veille-date">VEILLE N°4 · AVRIL 2025</div>
+        <h3>Deepfakes et ingénierie sociale : la prochaine frontière de la fraude en entreprise</h3>
+        <p>Les deepfakes audio et vidéo sont désormais accessibles à des coûts quasi nuls. Des cas documentés montrent des employés virés de l'argent après avoir reçu de faux appels de leur "PDG" générés par IA.</p>
+        <ul class="veille-points">
+          <li>Les attaques BEC (Business Email Compromise) intègrent désormais des composantes vocales générées par IA</li>
+          <li>Des outils de détection de deepfakes émergent mais restent largement en retard sur les outils de création</li>
+          <li>Les procédures de double validation pour les virements restent la meilleure protection organisationnelle</li>
+          <li>La formation des équipes financières et dirigeantes devient prioritaire</li>
+        </ul>
+        <div class="veille-source">Sources : CERT-FR · Rapport FBI IC3 2024 · MIT Technology Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BILAN PERSONNEL -->
+<section id="bilan">
+  <div class="section-wrap">
+    <div class="section-label">Bilan personnel</div>
+    <h2 class="section-title">Acquis, difficultés & évolution</h2>
+    <p class="section-desc">Un regard réflexif sur ces deux années de formation, attendu lors de l'épreuve orale E6.</p>
+
+    <div class="bilan-grid">
+      <div class="bilan-card">
+        <h3><span class="ico">✅</span> Ce que j'ai acquis</h3>
+        <p>Ces deux années m'ont permis de passer d'une connaissance théorique de l'informatique à une véritable capacité opérationnelle. Je sais aujourd'hui administrer un domaine Windows, configurer un réseau segmenté, déployer un pare-feu pfSense, et répondre efficacement à des incidents utilisateurs sous pression. L'alternance m'a appris la gestion des priorités, la communication professionnelle et la rédaction de documentation technique.</p>
+      </div>
+      <div class="bilan-card">
+        <h3><span class="ico">⚡</span> Difficultés rencontrées</h3>
+        <p>La principale difficulté a été d'appréhender la complexité des architectures réelles en entreprise, très différentes des environnements virtualisés de formation. Chez SCC, j'ai dû rapidement monter en compétence sur des outils propriétaires clients que je ne connaissais pas. La gestion du stress lors des incidents critiques en production a également été un apprentissage important.</p>
+      </div>
+      <div class="bilan-card">
+        <h3><span class="ico">📈</span> Mon évolution</h3>
+        <p>J'ai évolué d'un profil purement technique vers un profil plus complet, capable de communiquer avec des utilisateurs non techniques, de documenter mes actions et de prendre du recul sur les enjeux de sécurité. L'expérience chez Sec-Cure m'a ouvert sur la dimension humaine de la cybersécurité, au-delà des outils techniques.</p>
+      </div>
+      <div class="bilan-card">
+        <h3><span class="ico">🎯</span> Mes objectifs</h3>
+        <p>Poursuivre en Licence Pro en alternance pour consolider l'expérience terrain, puis intégrer un Master spécialisé en Cybersécurité. À moyen terme : obtenir les certifications CCNA et CompTIA Security+ pour valider mes compétences réseau et sécurité sur le marché professionnel.</p>
+      </div>
+    </div>
+
+    <div class="bilan-quote">
+      "Ces deux années de BTS SIO SISR m'ont convaincu que la cybersécurité n'est pas qu'une affaire de techniciens : c'est avant tout une culture à diffuser, des processus à construire et des humains à former. C'est cette dimension humaine et technique combinée qui me motive à poursuivre dans ce domaine."
+      <cite>— KHLOUFI Zakaria, BTS SIO SISR 2024</cite>
+    </div>
+
+    <br><br>
+    <div class="section-label" style="margin-bottom:1rem;">Objectifs à court et moyen terme</div>
+    <div class="objectifs-grid">
+      <div class="obj-item">
+        <span class="obj-num">01</span>
+        <span class="obj-text">Licence professionnelle en alternance pour approfondir l'expérience terrain</span>
+      </div>
+      <div class="obj-item">
+        <span class="obj-num">02</span>
+        <span class="obj-text">Master spécialisé en Cybersécurité des systèmes d'information</span>
+      </div>
+      <div class="obj-item">
+        <span class="obj-num">03</span>
+        <span class="obj-text">Certification CCNA (Cisco) pour valider les compétences réseau</span>
+      </div>
+      <div class="obj-item">
+        <span class="obj-num">04</span>
+        <span class="obj-text">CompTIA Security+ pour la reconnaissance internationale en sécurité</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Me contacter</h2>
+    <div class="contact-grid">
+      <div class="contact-links">
+        <a href="mailto:contact@khloufi-zakaria.fr" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div>
+            <div class="contact-link-label">EMAIL</div>
+            <div class="contact-link-value">contact@khloufi-zakaria.fr</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/zakaria-khloufi" class="contact-link" target="_blank">
+          <span class="contact-link-icon">🔗</span>
+          <div>
+            <div class="contact-link-label">LINKEDIN</div>
+            <div class="contact-link-value">linkedin.com/in/zakaria-khloufi</div>
+          </div>
+        </a>
+        <a href="https://cdn.gamma.app/g8cg9cy82c79yja/a2927899911e486c9f400232d9374abe/original/cv-de-khloufi-zakaria-pdf1.pdf" class="contact-link" target="_blank">
+          <span class="contact-link-icon">📄</span>
+          <div>
+            <div class="contact-link-label">CV</div>
+            <div class="contact-link-value">Télécharger mon CV PDF</div>
+          </div>
+        </a>
+        <a href="https://zakariakhloufi9266-prog.github.io/khloufi-zakaria.github.io/Tableau_de_synthe_se_-KHLOUFI_Zakaria_version_finale.pdf" class="contact-link" target="_blank">
+          <span class="contact-link-icon">📋</span>
+          <div>
+            <div class="contact-link-label">TABLEAU DE SYNTHÈSE</div>
+            <div class="contact-link-value">Réalisations professionnelles</div>
+          </div>
+        </a>
+      </div>
+      <div class="contact-right">
+        <p>N'hésitez pas à me contacter pour échanger sur mes projets, discuter d'opportunités professionnelles en alternance ou collaborer. Je suis disponible pour un entretien à tout moment.</p>
+        <p>Pour l'épreuve E6 du BTS SIO SISR, l'ensemble des fiches de situations professionnelles, le tableau de synthèse et les preuves de certifications sont disponibles sur ce portfolio et en téléchargement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2024 KHLOUFI Zakaria · BTS SIO SISR · Tous droits réservés
+</footer>
+
+</body>
+</html>
